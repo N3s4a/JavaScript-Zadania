@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizzeria</title>
+</head>
+<body>
+
+<h2>Wybierz rozmiar pizzy:</h2>
+
+<input type="radio" id="mala" name="rozmiar" value="10"> <label for="mala">Mała (10 zł)</label><br>
+<input type="radio" id="srednia" name="rozmiar" value="15" checked> <label for="srednia">Średnia (15 zł)</label><br>
+<input type="radio" id="duza" name="rozmiar" value="20"> <label for="duza">Duża (20 zł)</label><br>
+
+<h2>Wybierz dodatki do pizzy:</h2>
+
+<input type="checkbox" id="ser" value="5"> <label for="ser">Ser (5 zł)</label><br>
+<input type="checkbox" id="szynka" value="6"> <label for="szynka">Szynka (6 zł)</label><br>
+<input type="checkbox" id="pieczarki" value="4"> <label for="pieczarki">Pieczarki (4 zł)</label><br>
+
+<button onclick="obliczCene()">Oblicz cenę pizzy</button>
+
+<p id="wynik"></p>
+
+<script>
+function obliczCene() {
+  var rozmiar = parseFloat(document.querySelector('input[name="rozmiar"]:checked').value);
+  var dodatki = document.querySelectorAll('input[type="checkbox"]:checked');
+  var cenaDodatkow = 0;
+
+  for (var i = 0; i < dodatki.length; i++) {
+    cenaDodatkow += parseFloat(dodatki[i].value);
+  }
+
+  var cenaPizzy = rozmiar + cenaDodatkow;
+  document.getElementById("wynik").innerHTML = "Cena Twojej pizzy: " + cenaPizzy.toFixed(2) + " zł";
+}
+</script>
+
+</body>
+</html>

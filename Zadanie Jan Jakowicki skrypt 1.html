@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sklep</title>
+</head>
+<body>
+
+<h2>Wybierz produkty:</h2>
+
+
+  <input type="checkbox" name="produkty" id="mleko" value="2"><label for="mleko">Mleko (2 zł)</label><br>
+  <input type="checkbox" name="produkty" id="chleb" value="3"><label for="chleb">Chleb (3 zł)</label><br>
+  <input type="checkbox" name="produkty" id="jajka" value="4"><label for="jajka">Jajka (4 zł)</label><br>
+  <input type="checkbox" name="produkty" id="maslo" value="5"><label for="maslo">Masło (5 zł)</label><br>
+
+
+<button onclick="obliczCene()">Oblicz cenę produktów</button>
+
+<p id="wynik"></p>
+
+<script>
+function obliczCene() {
+  var select = document.querySelectorAll('input[type="checkbox"]:checked');
+  var cenaProduktow = 0;
+
+  for (var i = 0; i < select.length; i++) {
+    cenaProduktow += parseFloat(select[i].value);
+  }
+
+  document.getElementById("wynik").innerHTML = "Cena twoich produktów to: " + cenaProduktow.toFixed(2) + " zł";
+}
+</script>
+
+</body>
+</html>
